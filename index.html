@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f4eee4">
+<title>Разденься — все страницы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Меню всех страниц кабинета «Разденься»: тот же стиль, что у таплинка — кремовый шёлк, золото,
+   AngelicaC для заголовков, Mulish для текста. Страница всегда светлая — это фирменный вид. */
+@font-face { font-family: "AngelicaC"; src: url("fonts/AngelicaC.woff2") format("woff2"); font-display: swap }
+
+:root {
+  --cream: #f4eee4;
+  --cream-2: #ece3d3;
+  --paper: #fffcf6;
+  --ink: #2e261b;
+  --text: #4d4232;
+  --muted: #7a6b55;
+  --gold: #c5921e;
+  --gold-t: #85600f;
+  --brown: #4a3810;
+  --dark: #1f1a14;
+  --card: rgba(255, 252, 246, .86);
+  --g-logo: linear-gradient(180deg, #4a3810 0%, #5d4715 14%, #8f6c22 34%, #c5921e 55%, #c8962c 100%);
+  --g-circ: linear-gradient(180deg, #c5921e, #85600f);
+  --f-display: "AngelicaC", "Cormorant Garamond", Georgia, serif;
+  --f-body: "Mulish", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box }
+html { -webkit-text-size-adjust: 100%; background: var(--cream) }
+body {
+  margin: 0; min-height: 100vh;
+  background: var(--cream) url("silk.jpg") center top / 720px auto repeat;
+  color: var(--ink); font: 400 15px/1.5 var(--f-body);
+}
+a { color: inherit; text-decoration: none }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px }
+
+/* колонка: на телефоне во всю ширину, на компьютере и iPad — узкая по центру */
+.col {
+  max-width: 460px; margin-inline: auto;
+  padding: calc(34px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+
+header { text-align: center; margin-bottom: 26px }
+.eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-t) }
+.logo {
+  margin: 12px 0 8px; font: 400 clamp(46px, 15vw, 62px)/1 var(--f-display); letter-spacing: .02em;
+  font-synthesis: none; font-style: normal;
+  background: var(--g-logo); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.slogan { font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted) }
+.rule { width: 64px; height: 1px; margin: 18px auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent) }
+
+nav { display: grid; gap: 12px }
+
+/* большая кнопка-карточка: значок, название, пояснение, стрелка */
+.item {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  padding: 14px 16px; border-radius: 20px; background: var(--card); border: 1px solid rgba(181, 138, 44, .28);
+  box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 12px 30px -22px rgba(74,56,16,.55);
+  cursor: pointer; -webkit-tap-highlight-color: transparent; transition: transform .12s ease, box-shadow .2s ease;
+}
+.item:active { transform: scale(.985) }
+@media (hover: hover) { .item:hover { box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 16px 34px -20px rgba(74,56,16,.6) } }
+.circ { width: 48px; height: 48px; flex: none; border-radius: 50%; background: var(--g-circ); color: #fff8ea; display: grid; place-items: center; box-shadow: 0 8px 16px -10px rgba(74,56,16,.8) }
+.circ svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
+.circ b { font: 800 15px/1 var(--f-body); letter-spacing: .02em }
+.txt { flex: 1; min-width: 0 }
+.ttl { display: block; font: 400 25px/1.1 var(--f-display); font-synthesis: none; font-style: normal; color: var(--ink) }
+.sub { display: block; margin-top: 3px; font-size: 13px; color: var(--muted) }
+.arr { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--gold-t); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease }
+
+/* таплинк: раскрывается выбор варианта */
+details { border-radius: 20px }
+summary { list-style: none }
+summary::-webkit-details-marker { display: none }
+details[open] > summary .arr { transform: rotate(90deg) }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 4px 4px }
+.choice {
+  display: grid; justify-items: center; gap: 2px; padding: 14px 10px; border-radius: 16px; text-align: center;
+  background: linear-gradient(180deg, #8f6c22, #4a3810); color: #fff8ea; box-shadow: 0 10px 22px -12px rgba(74,56,16,.8);
+  -webkit-tap-highlight-color: transparent; transition: transform .12s ease;
+}
+.choice:active { transform: scale(.97) }
+.choice .ttl { color: inherit; font-size: 23px }
+.choice small { font-size: 11.5px; opacity: .8 }
+.all { grid-column: 1 / -1; padding: 12px; border-radius: 14px; text-align: center; font-size: 13.5px; font-weight: 700; color: var(--ink); background: rgba(255,255,255,.6); border: 1.5px solid rgba(181,138,44,.6) }
+
+/* страница ещё не опубликована */
+.soon { flex: none; padding: 6px 10px; border-radius: 999px; background: var(--dark); color: #fbf5ea; font: 800 9.5px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase }
+.item[aria-disabled="true"] { cursor: default; opacity: .72 }
+.item[aria-disabled="true"] .arr { display: none }
+
+footer { padding: 26px 0 6px; text-align: center; font-size: 12px; color: var(--muted) }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
+</style>
+</head>
+<body>
+<div class="col">
+  <header>
+    <div class="eyebrow">Все страницы кабинета</div>
+    <h1 class="logo">Разденься</h1>
+    <div class="slogan">Эстетика лица и тела</div>
+    <div class="rule"></div>
+  </header>
+
+  <nav>
+    <a class="item" href="https://razdensya18.github.io/kontent-plan/">
+      <span class="circ"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
+      <span class="txt"><span class="ttl">Контент-план</span><span class="sub">Посты для Instagram: темы и даты</span></span>
+      <svg class="arr" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+
+    <a class="item" href="https://razdensya18.github.io/uchet/">
+      <span class="circ"><svg viewBox="0 0 24 24"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19z"/><path d="M6 17.5h12M9.5 8h5M9.5 11.5h5"/></svg></span>
+      <span class="txt"><span class="ttl">Учёт</span><span class="sub">Приёмы, деньги и материалы</span></span>
+      <svg class="arr" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+
+    <details>
+      <summary class="item">
+        <span class="circ"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+        <span class="txt"><span class="ttl">Таплинк</span><span class="sub">Страница-визитка: выбери вариант</span></span>
+        <svg class="arr" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </summary>
+      <div class="choices">
+        <a class="choice" href="https://razdensya18.github.io/shelk/"><span class="ttl">Шёлк</span><small>вариант 1</small></a>
+        <a class="choice" href="https://razdensya18.github.io/tisnenie/"><span class="ttl">Тиснение</span><small>вариант 2</small></a>
+        <a class="all" href="https://razdensya18.github.io/">Все варианты оформления</a>
+      </div>
+    </details>
+
+    <a class="item" id="vk" href="https://razdensya18.github.io/vk/">
+      <span class="circ"><b>ВК</b></span>
+      <span class="txt"><span class="ttl">Группа ВК</span><span class="sub">Варианты оформления группы</span></span>
+      <svg class="arr" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </nav>
+
+  <footer>@razdensya18 · Ижевск</footer>
+</div>
+
+<script>
+// Варианты оформления ВК публикуются позже: пока страницы нет, кнопка показывает «скоро» и никуда не ведёт.
+(function () {
+  var vk = document.getElementById('vk'), url = vk.href;
+  fetch(url, { method: 'HEAD', cache: 'no-store' }).then(function (r) {
+    if (r.ok) return;
+    vk.removeAttribute('href');
+    vk.setAttribute('aria-disabled', 'true');
+    vk.querySelector('.sub').textContent = 'Варианты оформления группы — готовятся';
+    var s = document.createElement('span');
+    s.className = 'soon'; s.textContent = 'скоро';
+    vk.appendChild(s);
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>
