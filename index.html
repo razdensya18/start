@@ -78,22 +78,6 @@ nav { display: grid; gap: 12px }
 .sub { display: block; margin-top: 3px; font-size: 13px; color: var(--muted) }
 .arr { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--gold-t); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease }
 
-/* таплинк: раскрывается выбор варианта */
-details { border-radius: 20px }
-summary { list-style: none }
-summary::-webkit-details-marker { display: none }
-details[open] > summary .arr { transform: rotate(90deg) }
-.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 4px 4px }
-.choice {
-  display: grid; justify-items: center; gap: 2px; padding: 14px 10px; border-radius: 16px; text-align: center;
-  background: linear-gradient(180deg, #8f6c22, #4a3810); color: #fff8ea; box-shadow: 0 10px 22px -12px rgba(74,56,16,.8);
-  -webkit-tap-highlight-color: transparent; transition: transform .12s ease;
-}
-.choice:active { transform: scale(.97) }
-.choice .ttl { color: inherit; font-size: 23px }
-.choice small { font-size: 11.5px; opacity: .8 }
-.all { grid-column: 1 / -1; padding: 12px; border-radius: 14px; text-align: center; font-size: 13.5px; font-weight: 700; color: var(--ink); background: rgba(255,255,255,.6); border: 1.5px solid rgba(181,138,44,.6) }
-
 /* страница ещё не опубликована */
 .soon { flex: none; padding: 6px 10px; border-radius: 999px; background: var(--dark); color: #fbf5ea; font: 800 9.5px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase }
 .item[aria-disabled="true"] { cursor: default; opacity: .72 }
@@ -126,18 +110,11 @@ footer { padding: 26px 0 6px; text-align: center; font-size: 12px; color: var(--
       <svg class="arr" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
     </a>
 
-    <details>
-      <summary class="item">
-        <span class="circ"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
-        <span class="txt"><span class="ttl">Таплинк</span><span class="sub">Страница-визитка: выбери вариант</span></span>
-        <svg class="arr" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-      </summary>
-      <div class="choices">
-        <a class="choice" href="https://razdensya18.github.io/shelk/"><span class="ttl">Шёлк</span><small>вариант 1</small></a>
-        <a class="choice" href="https://razdensya18.github.io/tisnenie/"><span class="ttl">Тиснение</span><small>вариант 2</small></a>
-        <a class="all" href="https://razdensya18.github.io/">Все варианты оформления</a>
-      </div>
-    </details>
+    <a class="item" href="https://razdensya18.github.io/tisnenie/">
+      <span class="circ"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+      <span class="txt"><span class="ttl">Таплинк</span><span class="sub">Страница-визитка «Тиснение»</span></span>
+      <svg class="arr" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
 
     <a class="item" id="vk" href="https://razdensya18.github.io/vk/">
       <span class="circ"><b>ВК</b></span>
